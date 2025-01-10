@@ -36,13 +36,11 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          # Installez SonarCloud scanner si ce n'est pas déjà fait
           npm install -g sonar-scanner
           
-          # Lancer l'analyse avec sonar-scanner
           sonar-scanner \
-            -Dsonar.projectKey=my_project_key \
-            -Dsonar.organization=my_organization_key \
+            -Dsonar.projectKey=B3-Final-Project_project-frontend \
+            -Dsonar.organization=B3-Final-Project \
             -Dsonar.sources=. \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
