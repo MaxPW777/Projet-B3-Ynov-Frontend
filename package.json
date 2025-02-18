@@ -8,9 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "test": ""
+    "test": "",
+    "sops:decrypt": "AWS_PROFILE=b3 sops --decrypt --input-type dotenv --output-type dotenv .env.enc > .env",
+    "sops:encrypt": "AWS_PROFILE=b3 sops --encrypt --input-type dotenv --kms arn:aws:kms:eu-west-3:989418411786:key/mrk-aab2b8d1dcaa4886a120afd58f023fcf .env > .env.enc"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.66.3",
+    "axios": "^1.7.9",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
@@ -21,6 +25,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^4.38.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
