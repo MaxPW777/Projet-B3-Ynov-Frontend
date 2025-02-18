@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { RegisterDto } from "@/lib/routes/auth/dto/register.dto";
 import { LoginDto } from "@/lib/routes/auth/dto/login.dto";
-import { authRouter } from "@/lib/routes/auth";
+import { AuthRouter } from "@/lib/routes/auth";
 
 // Hook for Register Mutation
 export function useRegisterMutation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (data: RegisterDto) => authRouter.register(data),
+    mutationFn: async (data: RegisterDto) => AuthRouter.register(data),
     onSuccess: (data) => {
       console.log("Registration successful", data);
       queryClient.invalidateQueries({ queryKey: ["user"] }); // Refresh user data
@@ -24,7 +24,7 @@ export function useLoginMutation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: async (data: LoginDto) => authRouter.login(data),
+    mutationFn: async (data: LoginDto) => AuthRouter.login(data),
     onSuccess: (data) => {
       console.log("Login successful", data);
       queryClient.invalidateQueries({ queryKey: ["user"] }); // Refresh user state
@@ -39,7 +39,7 @@ export function useLoginMutation() {
 export function useConfirmAccountMutation() {
   return useMutation({
     mutationFn: async (data: { username: string; code: string }) =>
-      authRouter.confirm(data),
+      AuthRouter.confirm(data),
     onSuccess: (data) => {
       console.log("Account confirmed", data);
     },
@@ -53,7 +53,7 @@ export function useConfirmAccountMutation() {
 export function useRefreshTokenMutation() {
   return useMutation({
     mutationFn: async (data: { refreshToken: string }) =>
-      authRouter.refresh(data),
+      AuthRouter.refresh(data),
     onSuccess: (data) => {
       console.log("Token refreshed", data);
     },

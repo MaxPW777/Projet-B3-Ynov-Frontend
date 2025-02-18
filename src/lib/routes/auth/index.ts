@@ -8,9 +8,9 @@ import { RegisterResponse } from "@/lib/routes/auth/response/register.response";
 import { LoginResponse } from "@/lib/routes/auth/response/login.response";
 import { RefreshResponse } from "@/lib/routes/auth/response/refresh.response";
 
-export class authRouter {
-  public static login = createFetcher<LoginResponse, LoginDto>(RESTServerRoute.REST_LOGIN, "POST");
-  public static register = createFetcher<RegisterResponse, RegisterDto>(RESTServerRoute.REST_SIGNUP, "POST");
-  public static confirm = createFetcher<object, ConfirmAccountDto>(RESTServerRoute.REST_CONFIRM, "POST");
-  public static refresh = createFetcher<RefreshResponse, RefreshTokenDto>(RESTServerRoute.REST_REFRESH, "POST");
+export class AuthRouter {
+  public static readonly login = createFetcher<LoginResponse, LoginDto>(RESTServerRoute.REST_LOGIN, "POST");
+  public static readonly register = createFetcher<RegisterResponse, RegisterDto>(RESTServerRoute.REST_SIGNUP, "POST");
+  public static readonly confirm = createFetcher<object, ConfirmAccountDto>(RESTServerRoute.REST_CONFIRM, "POST");
+  public static readonly refresh = createFetcher<RefreshResponse, RefreshTokenDto>(RESTServerRoute.REST_REFRESH, "POST");
 }
